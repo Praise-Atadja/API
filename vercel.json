@@ -1,0 +1,122 @@
+{
+  "APIs": [
+    {
+      "name": "Store Patient Data API",
+      "description": "API to store patient data in Firebase Storage.",
+      "endpoint": "/store-patient-data",
+      "method": "POST",
+      "request": {
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "Name": "string",
+          "Age": "integer",
+          "Gender": "string",
+          "ECG_Data": "object",
+          "Other_Details": "object"
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "Data stored successfully.",
+          "body": {
+            "message": "string",
+            "stored_data": "object"
+          }
+        },
+        "400": {
+          "description": "Bad request if Name field is missing.",
+          "body": {
+            "message": "string"
+          }
+        },
+        "500": {
+          "description": "Internal server error.",
+          "body": {
+            "message": "string",
+            "error": "string"
+          }
+        }
+      }
+    },
+    {
+      "name": "Heart Disease Prediction API",
+      "description": "API to predict heart disease based on patient data.",
+      "endpoint": "/predict",
+      "method": "POST",
+      "request": {
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "BMI": "float",
+          "Smoking": "string",
+          "AlcoholDrinking": "string",
+          "Stroke": "string",
+          "PhysicalHealth": "integer",
+          "MentalHealth": "integer",
+          "DiffWalking": "string",
+          "Sex": "string",
+          "AgeCategory": "string",
+          "Race": "string",
+          "Diabetic": "string",
+          "PhysicalActivity": "string",
+          "GenHealth": "string",
+          "SleepTime": "integer",
+          "Asthma": "string",
+          "KidneyDisease": "string",
+          "SkinCancer": "string",
+          "ECG_Classification": "string"
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "Prediction results.",
+          "body": {
+            "Diagnosis": "array",
+            "Recommendation": "array",
+            "Critical Alert": "array",
+            "Follow-Up": "array",
+            "Referral": "array"
+          }
+        },
+        "400": {
+          "description": "Invalid input format.",
+          "body": {
+            "error": "string"
+          }
+        }
+      }
+    },
+    {
+      "name": "ECG Image Processing API",
+      "description": "API to preprocess ECG images and perform analysis.",
+      "endpoint": "/predict",
+      "method": "POST",
+      "request": {
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "image_name": "string"
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "Image processing results.",
+          "body": {
+            "similarity_score": "float",
+            "classification": "string"
+          }
+        },
+        "404": {
+          "description": "Image not found.",
+          "body": {
+            "message": "string"
+          }
+        }
+      }
+    }
+  ]
+}
